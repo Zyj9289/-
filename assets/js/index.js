@@ -22,8 +22,10 @@ function getUserInof() {
     //发送ajax
     $.ajax({
         url: '/my/userinfo',
+        // headers表示请求头配置对象
         // headers: {
         //     //重新登陆，因为token过期事件12小时
+            //设置请求头登录信息
         //     Authorization: localStorage.getItem
         //         ("token") || ""
         // },
@@ -32,12 +34,12 @@ function getUserInof() {
             if (res.status !== 0) {
                 return layer.msg(res.message);
             }
-            //请求成功，渲染用户头像信息
+            //请求成功，渲染用户信息
             renderAvatar(res.data);
         }
     })
 }
-//封装用户头像渲染
+//封装用户信息渲染
 function renderAvatar(user) {
     //1.用户名(昵称优先，没有用username)
     var name = user.nickname || user.username;
