@@ -25,17 +25,19 @@ function getUserInof() {
         // headers表示请求头配置对象
         // headers: {
         //     //重新登陆，因为token过期事件12小时
-            //设置请求头登录信息
+        //设置请求头登录信息
         //     Authorization: localStorage.getItem
         //         ("token") || ""
         // },
         success: function (res) {
+
             //判读状态码
             if (res.status !== 0) {
                 return layer.msg(res.message);
             }
             //请求成功，渲染用户信息
             renderAvatar(res.data);
+            // console.log('ok');
         }
     })
 }
@@ -47,7 +49,7 @@ function renderAvatar(user) {
     //2.用户头像
     if (user.user_pic !== null) {
         //有头像
-        $('layui-nav-img').show().attr('src', user.user_pic);
+        $('.layui-nav-img').show().attr('src', user.user_pic);
         $('.user-avatar').hide();
     } else {
         //没有头像
